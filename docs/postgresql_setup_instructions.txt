@@ -61,3 +61,26 @@ Save the file, close it. The restart postgresql::
     psql -U fleetmatix fleetmatix
     
     (enter password pakistan when asked.)
+
+
+POSTGis installation and setup
+===============================
+
+    sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable
+
+    sudo apt-get update; sudo apt-get install postgis
+    
+    (May need to confirm that we have postgis 2.0.3 version installed through synaptic package manager)
+    
+
+    psql -d yourdatabase -c "CREATE EXTENSION postgis;"
+    psql -d yourdatabase -c "CREATE EXTENSION postgis_topology;"
+
+Then while in your repository folder, run:
+
+    sudo -u postgres ./configure_db_for_postgis.sh fleetmatix
+    
+    (when asked for password, enter your linux user password)
+
+
+
