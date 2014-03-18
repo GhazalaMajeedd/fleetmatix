@@ -38,7 +38,25 @@ If the above command returns some numbers (process IDs) then postgresql is runni
     
 If login successfull, press ctrl+D to get out of the PSQL prompt.
 
-7. Verify that you are able to login using the fleetmatix user::
+7. Enable login for user accounts that don't have corresponding system accounts::
+
+   - Edit the pg_hba.conf file::
+
+     sudo kate /etc/postgresql/9.1/main/pg_hba.conf
+
+Find the line
+
+    local   all             all                                     peer
+
+and replace it with:
+    
+    local   all             all                                     md5
+
+Save the file, close it. The restart postgresql::
+
+    sudo serive postgresql restart
+
+8. Verify that you are able to login using the fleetmatix user::
 
     psql -U fleetmatix fleetmatix
     
