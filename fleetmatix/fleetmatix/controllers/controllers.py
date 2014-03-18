@@ -27,3 +27,9 @@ def contact_form(request):
             return HTTPFound(location=request.route_url('home'))
 
     return {'contact_form': f}
+
+
+@view_config(route_name='test_map', renderer='test_map.mako')
+def test_map(request):
+    one = None
+    return {'one': one, 'project': 'fleetmatix'}
