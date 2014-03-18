@@ -1,0 +1,45 @@
+1. Ensure Postgresql and Postgis are installed
+
+2. Check that postgresql is running::
+
+    pidof postgres
+    
+If the above command returns some numbers (process IDs) then postgresql is running otherwise you have to start the database by issuing the command::
+
+    sudo service postgresql start
+
+3. Create a user for postgresql::
+
+    su -
+    (enter your password)
+    
+    su postgres
+    
+    createuser your_user_name
+    
+    (Select the user to be super user)
+    
+    press ctrl+D twice to get back to your normal user.
+
+4. Create database::
+
+    createdb fleetmatix
+
+5. Verify that you are able to log into the database::
+
+    psql fleetmatix
+
+6. Create a user for the DB and assign it all rights to the DB::
+
+    fleetmatix=# create user fleetmatix WITH PASSWORD 'pakistan';
+    
+    fleetmatix=# GRANT ALL PRIVILEGES ON DATABASE fleetmatix to fleetmatix;
+
+    
+If login successfull, press ctrl+D to get out of the PSQL prompt.
+
+7. Verify that you are able to login using the fleetmatix user::
+
+    psql -U fleetmatix fleetmatix
+    
+    (enter password pakistan when asked.)
