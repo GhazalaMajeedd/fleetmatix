@@ -21,6 +21,7 @@ from ..models import (
     RoutePermission,
     UserPermission,
     Base,
+    Station
     )
 
 
@@ -62,6 +63,13 @@ def main(argv=sys.argv):
         if 0 == db.query(RoutePermission).count():
             db.add(RoutePermission('pyckauth_manager', 'ALL', 'admin'))
             db.flush()
+
+        s = Station()
+        s.name = 'IIUI'
+        s.location = 'POINT(33.658638 73.029095)'
+        db.add(s)
+        db.flush()
+
 
     #populate application models
     for app_name in enabled_apps:

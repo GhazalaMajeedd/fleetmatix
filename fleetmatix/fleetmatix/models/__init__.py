@@ -10,6 +10,7 @@ Base = declarative_base()
 
 #from models import your_model_names_here
 from auth import Permission, User, UserPermission, RoutePermission
+from models import Station
 
 # Place additional model names here for ease of importing.
-__all__ = ['db', 'Base', 'Permission', 'User', 'UserPermission', 'RoutePermission']
+__all__ = ['db', 'Base', 'Permission', 'User', 'UserPermission', 'RoutePermission', 'Station']

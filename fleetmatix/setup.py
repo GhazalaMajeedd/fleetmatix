@@ -18,7 +18,8 @@ requires = [
     'zope.sqlalchemy',
     'waitress',
     'wtforms',
-    'wtdojo'
+    'wtdojo',
+    'GeoAlchemy2'
 ]
 
 if sys.version_info[:3] < (2, 5, 0):

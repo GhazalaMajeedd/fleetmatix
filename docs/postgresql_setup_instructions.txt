@@ -73,8 +73,8 @@ POSTGis installation and setup
     (May need to confirm that we have postgis 2.0.3 version installed through synaptic package manager)
     
 
-    psql -d yourdatabase -c "CREATE EXTENSION postgis;"
-    psql -d yourdatabase -c "CREATE EXTENSION postgis_topology;"
+    sudo -u postgres psql -d yourdatabase -c "CREATE EXTENSION postgis;"
+    sudo -u postgres psql -d yourdatabase -c "CREATE EXTENSION postgis_topology;"
 
 Then while in your repository folder, run:
 
