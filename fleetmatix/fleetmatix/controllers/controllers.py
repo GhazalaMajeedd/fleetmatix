@@ -3,6 +3,7 @@ from pyramid.httpexceptions import HTTPFound
 
 from ..models import (
     db,
+    Station
     )
 
 from ..forms import ContactForm
@@ -33,3 +34,20 @@ def contact_form(request):
 def test_map(request):
     one = None
     return {'one': one, 'project': 'fleetmatix'}
+
+@view_config(route_name='station_add', renderer='add_station.mako')
+def add_station(request):
+    #assert False
+    if 'POST' == request.method :
+        s = Station()
+        s.name = request.POST['Station Name']
+        p= 'POINT(%s %s)'%(request.POST['Latitude'],request.POST['Longitude'])
+        s.location = p 
+        db.add(s)
+        db.flush()
+        
+        request.session.flash("Station Saved!")
+        return HTTPFound(location=request.route_url('admin.StationCRUD_list'))
+
+
+    return {}

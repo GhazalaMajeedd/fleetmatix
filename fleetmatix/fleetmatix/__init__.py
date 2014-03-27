@@ -32,6 +32,7 @@ def main(global_config, **settings):
     config.include('pyramid_handlers')
     config.add_view('pyramid.view.append_slash_notfound_view',
                 context='pyramid.httpexceptions.HTTPNotFound')
+    
 
     add_admin_handler(config, db, get_models(fleetmatix), 'admin.', '/admin', AdminController)
 
