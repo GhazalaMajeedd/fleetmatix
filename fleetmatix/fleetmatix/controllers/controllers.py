@@ -48,6 +48,32 @@ def add_station(request):
         
         request.session.flash("Station Saved!")
         return HTTPFound(location=request.route_url('admin.StationCRUD_list'))
+@view_config(route_name='route_add', renderer='add_route.mako')
+def add_route(request):
+    #assert False
+    if 'POST' == request.method :
+        s = Station()
+        s.name = request.POST['Station Name']
+        p= 'POINT(%s %s)'%(request.POST['Latitude'],request.POST['Longitude'])
+        s.location = p 
+        db.add(s)
+        db.flush()
+        
+        request.session.flash("Station Saved!")
+        return HTTPFound(location=request.route_url('admin.StationCRUD_list'))
+@view_config(route_name='station_view', renderer='view_station.mako')
+def view_station(request):
+    #assert False
+    if 'POST' == request.method :
+        s = Station()
+        s.name = request.POST['Station Name']
+        p= 'POINT(%s %s)'%(request.POST['Latitude'],request.POST['Longitude'])
+        s.location = p 
+        db.add(s)
+        db.flush()
+        
+        request.session.flash("Station Saved!")
+        return HTTPFound(location=request.route_url('admin.StationCRUD_list'))
 
 
     return {}
