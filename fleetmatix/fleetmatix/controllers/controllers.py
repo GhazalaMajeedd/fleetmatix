@@ -1,5 +1,6 @@
 from pyramid.view import view_config
-from pyramid.httpexceptions import HTTPFound
+from pyramid.httpexceptions import HTTPFound, HTTPNotFound
+from geoalchemy2.functions import *
 
 from ..models import (
     db,
@@ -63,17 +64,11 @@ def add_route(request):
         return HTTPFound(location=request.route_url('admin.StationCRUD_list'))
 @view_config(route_name='station_view', renderer='view_station.mako')
 def view_station(request):
-    #assert False
-    if 'POST' == request.method :
-        s = Station()
-        s.name = request.POST['Station Name']
-        p= 'POINT(%s %s)'%(request.POST['Latitude'],request.POST['Longitude'])
-        s.location = p 
-        db.add(s)
-        db.flush()
-        
-        request.session.flash("Station Saved!")
-        return HTTPFound(location=request.route_url('admin.StationCRUD_list'))
-
-
-    return {}
+    station_name = request.matchdict['station_name']
+    station = db.query(Station).filter_by(name=station_name).first()
+    if not station:
+        return  HTTPNotFound('Station not found')
+    
+    print(station.location.ST_AsText())
+    assert False
+    return {'station': station}
