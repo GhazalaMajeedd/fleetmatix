@@ -29,8 +29,11 @@ line.setMap(window.map);
 function addNewPoint(e) {
   //var path = line.getPath();
   //alert(e.latLng.k);
-  //console.log(e.latLng);
-  
+  console.log(e.latLng);
+  console.log(e.latLng.A);
+  console.log(e.latLng.k);
+  document.myform.lat.value = e.latLng.A;
+  document.myform.lng.value = e.latLng.k;
   //var map = new google.maps.Map(document.getElementById("map-canvas"));
 
   var marker = new google.maps.Marker({
@@ -53,11 +56,11 @@ google.maps.event.addDomListener(window, 'load', initialize);
 <div>
 <h1>Add a Station</h1>
 
-<form action="${request.route_url('station_add')}" method="POST">
+<form action="${request.route_url('station_add')}" method="POST" name="myform">
     
-Station Name: <input type="text" name="Station Name"><br>
-<input type="hidden" name="Latitude"><br>
-<input type="hidden" name="Longitude">
+Station Name: <input type="text" name="station_name"><br>
+<input type="hidden" name="lat"><br>
+<input type="hidden" name="lng">
 <input type="submit" value="Add Station" />
 </form>
 <br /><br /><br /><br /><br /><br />
