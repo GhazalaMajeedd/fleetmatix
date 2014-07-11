@@ -15,25 +15,18 @@ window.map = new google.maps.Map(mapDiv, {
     zoom: 12,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   });
-  
-line = new google.maps.Polyline({
-    strokeColor: '#ff0000',
-    strokeOpacity: 1.0,
-    strokeWeight: 2
-  });
-line.setMap(window.map);
 
-  google.maps.event.addListener(window.map, 'click', addNewPoint);
+  
 }
 
 function addNewPoint(e) {
   //var path = line.getPath();
   //alert(e.latLng.k);
   console.log(e.latLng);
-  console.log(e.latLng.A);
-  console.log(e.latLng.k);
-  document.myform.lat.value = e.latLng.A;
-  document.myform.lng.value = e.latLng.k;
+  console.log(e.latLng.lat());
+  console.log(e.latLng.lng());
+  document.myform.lat.value = e.latLng.lat();
+  document.myform.lng.value = e.latLng.lng();
   //var map = new google.maps.Map(document.getElementById("map-canvas"));
 
   var marker = new google.maps.Marker({
@@ -41,7 +34,7 @@ function addNewPoint(e) {
       map: window.map,
       title: 'Hello World!'
   });
-
+  
 }
 google.maps.event.addDomListener(window, 'load', initialize);
 </script>
