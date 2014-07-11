@@ -11,41 +11,32 @@ var line;
 function initialize() {
 var mapDiv = document.getElementById('map-canvas');
 window.map = new google.maps.Map(mapDiv, {
-    center: new google.maps.LatLng(33.6667,73.1667),
-    zoom: 12,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-  });
-  
-line = new google.maps.Polyline({
-    strokeColor: '#ff0000',
-    strokeOpacity: 1.0,
-    strokeWeight: 2
-  });
-line.setMap(window.map);
+center: new google.maps.LatLng(33.6667,73.1667),
+zoom: 12,
+mapTypeId: google.maps.MapTypeId.ROADMAP
+});
 
-  google.maps.event.addListener(window.map, 'click', addNewPoint);
 }
 
 function addNewPoint(e) {
-  //var path = line.getPath();
-  //alert(e.latLng.k);
-  console.log(e.latLng);
-  console.log(e.latLng.A);
-  console.log(e.latLng.k);
-  document.myform.lat.value = e.latLng.A;
-  document.myform.lng.value = e.latLng.k;
-  //var map = new google.maps.Map(document.getElementById("map-canvas"));
+//var path = line.getPath();
+//alert(e.latLng.k);
+console.log(e.latLng);
+console.log(e.latLng.lat());
+console.log(e.latLng.lng());
+document.myform.lat.value = e.latLng.lat();
+document.myform.lng.value = e.latLng.lng();
+//var map = new google.maps.Map(document.getElementById("map-canvas"));
 
-  var marker = new google.maps.Marker({
-      position: e.latLng,
-      map: window.map,
-      title: 'Hello World!'
-  });
-
+var marker = new google.maps.Marker({
+position: e.latLng,
+map: window.map,
+title: 'Hello World!'
+});
 }
 google.maps.event.addDomListener(window, 'load', initialize);
 </script>
-  </head>
+</head>
 
 <body>
 <div id="map-canvas" style="width:700px;height:400px;float: right"></div>
@@ -57,7 +48,6 @@ google.maps.event.addDomListener(window, 'load', initialize);
 <h1>Add a Station</h1>
 
 <form action="${request.route_url('station_add')}" method="POST" name="myform">
-    
 Station Name: <input type="text" name="station_name"><br>
 <input type="hidden" name="lat"><br>
 <input type="hidden" name="lng">

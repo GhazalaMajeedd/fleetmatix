@@ -70,8 +70,16 @@ def view_station(request):
     station_name = request.matchdict['station_name']
     station = db.query(Station).filter_by(name=station_name).first()
     if not station:
-        return  HTTPNotFound('Station not found')
-    
-    print(station.location.ST_AsText())
-    assert False
+        return HTTPNotFound('Station not found')
+
+    point_str = db.scalar(station.location.ST_AsText())
+
+    # now point_str contains something like: 'POINT(33.658638 73.029095)'
+    # Fetching lat/lng from this string and adding two properties to
+    # station object named lat and lng
+
+    lat, lng = point_str[6:-1].split()
+    station.lat = float(lat)
+    station.lng = float(lng)
+
     return {'station': station}
