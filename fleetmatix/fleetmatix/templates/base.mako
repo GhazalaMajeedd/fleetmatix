@@ -77,6 +77,15 @@ from fleetmatix.auth import is_allowed
   %if is_allowed(request, 'pyckauth_manager'):
   <a href="${request.route_url('pyckauth_manager')}">Auth Manager</a> |
   %endif
+  <a href="${request.route_url('route_add')}">Add Route</a> |
+  
+  %if is_allowed(request, 'station_add'):
+  <a href="${request.route_url('station_add')}">Add Station</a> |
+  %endif
+  
+  %if is_allowed(request, 'station_view'):
+  <a href="${request.route_url('station_view')}">View Station</a> |
+  %endif
   
   %if is_allowed(request, 'admin.admin_index'):
   <a href="${request.route_url('admin.admin_index')}">Admin Section</a> |
