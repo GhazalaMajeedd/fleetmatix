@@ -11,28 +11,31 @@ var line;
 function initialize() {
 var mapDiv = document.getElementById('map-canvas');
 window.map = new google.maps.Map(mapDiv, {
-center: new google.maps.LatLng(33.6667,73.1667),
-zoom: 12,
-mapTypeId: google.maps.MapTypeId.ROADMAP
-});
+    center: new google.maps.LatLng(33.6667,73.1667),
+    zoom: 12,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  });
 
+  
 }
 
 function addNewPoint(e) {
-//var path = line.getPath();
-//alert(e.latLng.k);
-console.log(e.latLng);
-console.log(e.latLng.lat());
-console.log(e.latLng.lng());
-document.myform.lat.value = e.latLng.lat();
-document.myform.lng.value = e.latLng.lng();
-//var map = new google.maps.Map(document.getElementById("map-canvas"));
+  //var path = line.getPath();
+  //alert(e.latLng.k);
+  console.log(e.latLng);
+  console.log(e.latLng.lat());
+  console.log(e.latLng.lng());
+  document.myform.lat.value = e.latLng.lat();
+  document.myform.lng.value = e.latLng.lng();
+  //var map = new google.maps.Map(document.getElementById("map-canvas"));
 
-var marker = new google.maps.Marker({
-position: e.latLng,
-map: window.map,
-title: 'Hello World!'
-});
+  var marker = new google.maps.Marker({
+      position: e.latLng,
+      map: window.map,
+      title: 'Hello World!'
+  });
+  
+
 }
 google.maps.event.addDomListener(window, 'load', initialize);
 </script>

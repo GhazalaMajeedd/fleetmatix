@@ -83,8 +83,8 @@ from fleetmatix.auth import is_allowed
   <a href="${request.route_url('station_add')}">Add Station</a> |
   %endif
   
-  %if is_allowed(request, 'station_view'):
-  <a href="${request.route_url('station_view')}">View Station</a> |
+  %if is_allowed(request, 'view_stations'):
+  <a href="${request.route_url('view_stations')}">View Station</a> |
   %endif
   
   %if is_allowed(request, 'admin.admin_index'):

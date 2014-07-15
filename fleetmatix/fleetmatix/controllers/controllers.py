@@ -65,6 +65,9 @@ def add_route(request):
         
         request.session.flash("Station Saved!")
         return HTTPFound(location=request.route_url('admin.StationCRUD_list'))
+    # where is the return for when request.method is not POST?
+    return {}
+
 @view_config(route_name='route_addpoly', renderer='add_routepoly.mako')
 def add_routepoly(request):
     #assert False
@@ -78,11 +81,15 @@ def add_routepoly(request):
         
         request.session.flash("Station Saved!")
         return HTTPFound(location=request.route_url('admin.StationCRUD_list'))
+    
+    return {}
+
 @view_config(route_name='station_view', renderer='view_station.mako')
 def view_station(request):
     station_name = request.matchdict['station_name']
     station = db.query(Station).filter_by(name=station_name).first()
     if not station:
+
         return HTTPNotFound('Station not found')
 
     point_str = db.scalar(station.location.ST_AsText())

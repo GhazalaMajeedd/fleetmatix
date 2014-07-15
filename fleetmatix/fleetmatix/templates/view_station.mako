@@ -9,17 +9,17 @@ PyCK Project - Station View
 function initialize() {
 var mapDiv = document.getElementById('map-canvas');
 window.map = new google.maps.Map(mapDiv, {
-center: new google.maps.LatLng(${station.lat}, ${station.lng}),
-zoom: 12,
-mapTypeId: google.maps.MapTypeId.ROADMAP
-});
-var myLatlng = new google.maps.LatLng(${station.lat}, ${station.lng});
-var marker = new google.maps.Marker({
-position: myLatlng,
-map: window.map,
-title: '${station.name}'
-});
-
+    center: new google.maps.LatLng(${station.lat}, ${station.lng}),
+    zoom: 12,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  });
+  
+  var myLatlng = new google.maps.LatLng(${station.lat}, ${station.lng});
+  var marker = new google.maps.Marker({
+      position: myLatlng,
+      map: window.map,
+      title: '${station.name}'
+  });
 
 }
 google.maps.event.addDomListener(window, 'load', initialize);
