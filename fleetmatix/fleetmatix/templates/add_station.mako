@@ -35,10 +35,11 @@ function addNewPoint(e) {
       title: 'Hello World!'
   });
   
+
 }
 google.maps.event.addDomListener(window, 'load', initialize);
 </script>
-  </head>
+</head>
 
 <body>
 <div id="map-canvas" style="width:700px;height:400px;float: right"></div>
@@ -50,7 +51,6 @@ google.maps.event.addDomListener(window, 'load', initialize);
 <h1>Add a Station</h1>
 
 <form action="${request.route_url('station_add')}" method="POST" name="myform">
-    
 Station Name: <input type="text" name="station_name"><br>
 <input type="hidden" name="lat"><br>
 <input type="hidden" name="lng">

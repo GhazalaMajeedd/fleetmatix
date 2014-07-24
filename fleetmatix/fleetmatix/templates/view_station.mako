@@ -21,14 +21,13 @@ window.map = new google.maps.Map(mapDiv, {
       title: '${station.name}'
   });
 
-
 }
 google.maps.event.addDomListener(window, 'load', initialize);
 </script>
-  
 <h1>Viewing Station: ${station.name}</h1>
 
 <div id="map-canvas" style="width:700px;height:400px;float: right"></div>
+
 
 
 

@@ -17,7 +17,8 @@ def application_routes(config):
     config.add_route('pyckauth_routes', '/auth/routes')
     config.add_route('station_add', '/station/add')
     config.add_route('route_add', '/route/add')
+    config.add_route('route_addpoly', '/route/addpoly')
     config.add_route('station_view', '/station/view/{station_name}')
-    
+    config.add_route('view_stations', '/stations')  
 
     config.add_route('test_map', '/map')
