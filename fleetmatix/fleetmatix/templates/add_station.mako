@@ -16,8 +16,10 @@ window.map = new google.maps.Map(mapDiv, {
     mapTypeId: google.maps.MapTypeId.ROADMAP
   });
 
-  
+google.maps.event.addListener(window.map, 'click', addNewPoint);  
 }
+
+
 
 function addNewPoint(e) {
   //var path = line.getPath();
