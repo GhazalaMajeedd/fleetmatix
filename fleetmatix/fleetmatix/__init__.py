@@ -33,6 +33,10 @@ def main(global_config, **settings):
     config.add_view('pyramid.view.append_slash_notfound_view',
                 context='pyramid.httpexceptions.HTTPNotFound')
     
+    
+    
+    config.add_route('map', '/map')
+    
 
     add_admin_handler(config, db, get_models(fleetmatix), 'admin.', '/admin', AdminController)
 

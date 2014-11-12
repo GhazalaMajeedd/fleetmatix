@@ -17,6 +17,8 @@ window.map = new google.maps.Map(mapDiv, {
   });
 
 google.maps.event.addListener(window.map, 'click', addNewPoint);  
+
+
 }
 
 
@@ -39,6 +41,7 @@ function addNewPoint(e) {
   
 
 }
+
 google.maps.event.addDomListener(window, 'load', initialize);
 </script>
 </head>
